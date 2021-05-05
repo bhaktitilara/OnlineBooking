@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+ <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hotel Booking</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+ <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+            <link rel="icon" type="image/png" sizes="16x16" th:href= "@{/static/images/android-chrome-512x512.png}">
+            <!-- Animate.css -->
+            <link rel="stylesheet" th:href="@{/css/animate.css}">
+            <!-- Icomoon Icon Fonts-->
+            <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+            <!-- Bootstrap  -->
+            <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+            <!-- Superfish -->
+            <link rel="stylesheet" th:href="@{/css/superfish.css}">
+
+            <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Load search -->
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+	<!-- Map -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: center;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: right;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>	
+	<body>
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+		<div id="fh5co-header">
+			<header id="fh5co-header-section">
+				<div class="container">
+					<div class="nav-header">
+						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+						<h1 id="fh5co-logo"><a href="index.html">Hotel Booking</a></h1>
+						<!-- START #fh5co-menu-wrap -->
+						<nav id="fh5co-menu-wrap" role="navigation">
+							<ul class="sf-menu" id="fh5co-primary-menu">
+								<li class="active">
+									<a href="index.html">Home</a>
+								</li>
+								<li>
+									<a href="Hotel_Booking_Form.html" class="fh5co-sub-ddown">New Reservation</a>
+								</li>
+								<li>
+									<a href="yourreservation.html" class="fh5co-sub-ddown">Your Reservation</a>
+								</li>
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+			
+		</div>
+		
+		
+		<div class="fh5co-hero">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5" style="background-image: url(images/bg.jpeg);">
+				<div class="desc animate-box">
+					<h2>Hotel Booking Now !!</h2>
+					<!-- The form -->
+					<br>
+					<br>
+					<form class="example" action="/action_page.php" style="margin:auto;max-width:700px">
+  						<input type="text" style ="color: black" placeholder="Search hotel by address..." name="search2">
+  						<button type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<div id="findhotels">
+</div>
+
+<div id="map" class="map"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([37.41, 8.82]),
+          zoom: 4
+        })
+      });
+    </script>
+
+		
+		<footer>
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<p class="fh5co-social-icons">
+								<a href="#"><i class="icon-twitter2"></i></a>
+								<a href="#"><i class="icon-facebook2"></i></a>
+								<a href="#"><i class="icon-instagram"></i></a>
+								<a href="#"><i class="icon-dribbble2"></i></a>
+								<a href="#"><i class="icon-youtube"></i></a>
+							</p>
+							<p><br>Made by <i style="font-size:24px" class="fa">&#xf08c;</i> <a href="https://www.linkedin.com/in/huiyang-li-798336115/" target="_blank">Huiyang</a> <a href="https://www.linkedin.com/in/bhaktiparikh/" target="_blank">Bhakti</a> <a href="https://www.linkedin.com/in/qiudan-wang-8063431a4/" target="_blank">Qiudan</a> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	
+
+	</div>
+	<!-- END fh5co-page -->
+	</div>
+	<!-- END fh5co-wrapper -->
+	<!-- jQuery -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<!-- jQuery Easing -->
+	<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- Waypoints -->
+	<script th:src="@{/js/jquery.waypoints.min.js}"></script>
+	<!-- Stellar -->
+	<script th:src="@{/js/jquery.stellar.min.js}"></script>
+	<!-- Superfish -->
+	<script th:src="@{/js/hoverIntent.js}"></script>
+	<script th:src="@{/js/superfish.js}"></script>
+
+	<!-- Main JS -->
+	<script th:src="@{/js/main.js}"></script>
+
+	</body>
+</html>
+

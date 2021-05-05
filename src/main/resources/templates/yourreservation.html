@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+	<head>
+            <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+                
+             <link rel="icon" type="image/png" sizes="16x16" th:href= "@{/static/images/android-chrome-512x512.png}">
+            <!-- Animate.css -->
+            <link rel="stylesheet" th:href="@{/css/animate.css}">
+            <!-- Icomoon Icon Fonts-->
+            <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+            <!-- Bootstrap  -->
+            <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+            <!-- Superfish -->
+            <link rel="stylesheet" th:href="@{css/superfish.css}">
+
+            <link rel="stylesheet" th:href="@{css/style.css}">
+
+            <link rel="stylesheet" th:href="@{css/your-reservations.css}">
+      <!-- Load icon library -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <!-- Modernizr JS -->
+            <script th:src="@{/js/modernizr-2.6.2.min.js}"></script>
+
+            <title>Your Reservation</title>
+	</head>
+	<body>
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+		<div id="fh5co-header">
+			<header id="fh5co-header-section">
+				<div class="container">
+					<div class="nav-header">
+						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+						<h1 id="fh5co-logo"><a href="index.html">Hotel Booking</a></h1>
+						<!-- START #fh5co-menu-wrap -->
+						<nav id="fh5co-menu-wrap" role="navigation">
+							<ul class="sf-menu" id="fh5co-primary-menu">
+								<li >
+									<a href="homepage.html">Home</a>
+								</li>
+								<li>
+									<a href="Hotel_Booking_Form.html" class="fh5co-sub-ddown">New Reservation</a>
+								</li>
+								<li class="active">
+									<a href="yourreservation.html" class="fh5co-sub-ddown">Your Reservation</a>
+								</li>
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+			
+		</div>
+		
+		
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" th:style="'background:url('+ @{/static/images/bg.jpeg} +');'">
+			<div class="hero animate-box">
+			<section class="container">
+						<h2 class="re-lis-h2">Reservation List</h2>
+
+						<table class="table table-bordered table-responsive-lg" id="res-table">
+			
+			<!-- thead Table elements -->
+			<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Room Type</th>
+					<th>Number of Guests</th>
+					<th>Stay Period</th>
+					<th>Arrival Date</th>
+					<th>Departure Date</th>
+					<th>Total Price</th>
+					<th>Action</th>
+
+				</tr>
+			</thead>
+
+			<!-- loop in each reservation in list and fill table -->
+			<tbody>
+				<tr th:each=" tempRes : ${resList}">
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.id}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.name}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.roomtype}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.persons}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.stayDays}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.arrivalDate}"
+						id="arr_str" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.de[departure_time
+					]}" />
+					<td style="text-align: center; vertical-align: middle;" th:text="${tempRes.price}" />
+					<td>
+						<!-- Update and Delete buttons -->
+						<div class="rows">
+							<div class="col-small">
+								<form th:action="@{/reservation-update}" method="POST">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								
+									<input type="hidden" name="resId" th:value="${tempRes.id}" />
+									<button type="submit" class="btn btn-info btn-lg">Update</button>
+								</form>
+							</div>
+
+							<div class="col-small">
+								<form th:action="@{/reservation-delete}" method="POST">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								
+									<input type="hidden" name="resId" th:value="${tempRes.id}" />
+									<button type="submit" class="btn btn-danger btn-lg"
+										onclick="if (!(confirm('Are you sure you want to delete this Reservation?'))) return false">
+										Delete</button>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</section>
+					
+				</div>
+			</div>
+
+		</div>
+		
+
+
+		
+		
+		<footer>
+			<div id="footer">
+				<div >
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<p><br>Made by <i style="font-size:24px" class="fa">&#xf08c;</i> <a href="https://www.linkedin.com/in/huiyang-li-798336115/" target="_blank">Huiyang</a> <a href="https://www.linkedin.com/in/bhaktiparikh/" target="_blank">Bhakti</a> <a href="https://www.linkedin.com/in/qiudan-wang-8063431a4/" target="_blank">Qiudan</a> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	
+
+	</div>
+	<!-- END fh5co-page -->
+
+	</div>
+	<!-- END fh5co-wrapper -->
+
+	<!-- jQuery -->
+
+
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<!-- jQuery Easing -->
+	<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- Waypoints -->
+	<script th:src="@{/js/jquery.waypoints.min.js}"></script>
+	<!-- Stellar -->
+	<script th:src="@{/js/jquery.stellar.min.js}"></script>
+	<!-- Superfish -->
+	<script th:src="@{/js/hoverIntent.js}"></script>
+	<script th:src="@{/js/superfish.js}"></script>
+
+	
+
+	<!-- Main JS -->
+	<script th:src="@{/js/main.js}"></script>
+
+	</body>
+</html>
+
